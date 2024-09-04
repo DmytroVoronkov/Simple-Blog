@@ -5,15 +5,10 @@
 
 {% block css_files %}
     <link rel="stylesheet" href="{% static 'blog/styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/styles/post.css' %}">
 {% endblock css_files %}
 
 {% block content %}
-    <header id='main-navigation'>
-        <h1><a href="">Dmytro`s blog</a></h1>
-        <nav>
-            <a href="">All posts</a>
-        </nav>
-    </header>
     <section id="welcome">
         <header>
             <img src="{% static 'blog/img/avatar.jpg' %}" alt="Dmytro - The author of the blog">
@@ -24,17 +19,7 @@
     <section id="latest-posts">
         <h2>My latest posts</h2>
         <ul>
-            <li>
-                <article class="post">
-                    <a href="">
-                        <img src="{% static 'blog/img/mountains.jpg' %}" alt="Mountain Hiking">
-                        <div class="post__content">
-                            <h3>Mountain hiking</h3>
-                            <p>Nobis ea sit dolor deserunt in ut ad. Iusto molestias recusandae quos odit saepe. Voluptatem sunt sed est rerum explicabo. Qui voluptatem earum ut atque delectus sed earum repellat. Optio quo aut voluptatem atque commodi id repudiandae.</p>
-                        </div>
-                    </a>
-                </article>
-            </li>
+            {% include 'blog/includes/post.html' %}
         </ul>
     </section>
     <section id="about">

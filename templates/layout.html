@@ -5,9 +5,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'styles/app.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
     {% block css_files %}{% endblock css_files %}
     <title>{% block title %}{% endblock title %}</title>
   </head>
-  <body>{% block content %}{% endblock content %}</body>
+  <body>
+    <header id="main-navigation">
+      <h1><a href="">Dmytro`s blog</a></h1>
+      <nav>
+        <a href="">All posts</a>
+      </nav>
+    </header>
+    {% block content %}{% endblock content %}
+  </body>
 </html>
