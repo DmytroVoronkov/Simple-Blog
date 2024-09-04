@@ -1,0 +1,32 @@
+{% extends 'layout.html' %} 
+{% load static %}
+
+{% block title %} My Blog {% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/styles/post.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+    <section id="welcome">
+        <header>
+            <img src="{% static 'blog/img/avatar.jpg' %}" alt="Dmytro - The author of the blog">
+            <h2>DMYTRO'S BLOG</h2>
+        </header>
+        <p>Sint porro perferendis ad velit quae maxime sapiente qui.</p>
+    </section>
+    <section id="latest-posts">
+        <h2>My latest posts</h2>
+        <ul>
+            {% for post in posts %}
+                {% include 'blog/includes/post.html' %}
+            {% endfor %}
+        </ul>
+    </section>
+    <section id="about">
+        <h2>What I do?</h2>
+        <p>Fugiat dignissimos explicabo assumenda. Itaque aut inventore quos aut et. Ab dolore id ut ducimus.</p>
+        <p>Incidunt optio inventore ducimus non fuga voluptatem. Maiores eum similique optio velit aut. Quo iste dicta qui fugiat laboriosam ad repellendus. Corporis quia laboriosam non et.</p>
+    </section>
+{% endblock content %}
