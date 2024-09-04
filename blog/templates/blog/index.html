@@ -1,7 +1,45 @@
 {% extends 'layout.html' %} 
+{% load static %}
 
 {% block title %} My Blog {% endblock title %}
 
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/styles/index.css' %}">
+{% endblock css_files %}
+
 {% block content %}
-    <h1>Welcome to my blog!</h1>
+    <header id='main-navigation'>
+        <h1><a href="">Dmytro`s blog</a></h1>
+        <nav>
+            <a href="">All posts</a>
+        </nav>
+    </header>
+    <section id="welcome">
+        <header>
+            <img src="{% static 'blog/img/avatar.jpg' %}" alt="Dmytro - The author of the blog">
+            <h2>DMYTRO'S BLOG</h2>
+        </header>
+        <p>Sint porro perferendis ad velit quae maxime sapiente qui.</p>
+    </section>
+    <section id="latest-posts">
+        <h2>My latest posts</h2>
+        <ul>
+            <li>
+                <article class="post">
+                    <a href="">
+                        <img src="{% static 'blog/img/mountains.jpg' %}" alt="Mountain Hiking">
+                        <div class="post__content">
+                            <h3>Mountain hiking</h3>
+                            <p>Nobis ea sit dolor deserunt in ut ad. Iusto molestias recusandae quos odit saepe. Voluptatem sunt sed est rerum explicabo. Qui voluptatem earum ut atque delectus sed earum repellat. Optio quo aut voluptatem atque commodi id repudiandae.</p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+        </ul>
+    </section>
+    <section id="about">
+        <h2>What I do?</h2>
+        <p>Fugiat dignissimos explicabo assumenda. Itaque aut inventore quos aut et. Ab dolore id ut ducimus.</p>
+        <p>Incidunt optio inventore ducimus non fuga voluptatem. Maiores eum similique optio velit aut. Quo iste dicta qui fugiat laboriosam ad repellendus. Corporis quia laboriosam non et.</p>
+    </section>
 {% endblock content %}
