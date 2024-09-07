@@ -6,13 +6,28 @@ from django.utils.text import slugify
 
 
 # Create your models here.
+class Address(models.Model):
+    street = models.CharField(max_length=50)
+    post_index = models.CharField(max_length=5)
+    city = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return f"{self.city} {self.street} {self.post_index}"
+
+    class Meta:
+        verbose_name_plural = "addresses"
+
+
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    
+
+    address = models.OneToOneField(
+        Address, on_delete=models.deletion.CASCADE, null=True
+    )
+
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
-
 
 
 class Book(models.Model):
