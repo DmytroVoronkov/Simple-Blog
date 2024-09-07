@@ -24,10 +24,12 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=200)
     image_name = models.CharField(max_length=100)
     date = models.DateField(auto_now=True, auto_now_add=False)
-    slug = models.SlugField(unique=True, blank=True, editable=False)
+    slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField(validators=[MinLengthValidator(20)])
 
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, related_name="posts")
+    author = models.ForeignKey(
+        Author, on_delete=models.SET_NULL, null=True, related_name="posts"
+    )
     tags = models.ManyToManyField(Tag)
 
     def __str__(self) -> str:
