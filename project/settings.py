@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1',]
 # Application definition
 
 INSTALLED_APPS = [
+    'book_outlet',
     'blog',
     'django.contrib.admin',
     'django.contrib.auth',
