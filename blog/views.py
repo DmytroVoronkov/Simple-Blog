@@ -1,6 +1,6 @@
 from datetime import date
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Post
 
@@ -23,5 +23,5 @@ def posts(request):
 
 def post_detail(request, slug):
     # post = next(post for post in all_posts if post["slug"] == slug)
-    post = Post.objects.get(slug=slug)
+    post = get_object_or_404(Post, slug=slug)
     return render(request, "blog/post-detail.html", {"post": post})
