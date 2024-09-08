@@ -24,4 +24,5 @@ def posts(request):
 def post_detail(request, slug):
     # post = next(post for post in all_posts if post["slug"] == slug)
     post = get_object_or_404(Post, slug=slug)
-    return render(request, "blog/post-detail.html", {"post": post})
+    post_tags = post.tags.all()
+    return render(request, "blog/post-detail.html", {"post": post, "post_tags": post_tags})
