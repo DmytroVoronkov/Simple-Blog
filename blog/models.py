@@ -34,3 +34,11 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.slug
+
+
+class Comment(models.Model):
+    user_name = models.CharField(max_length=50)
+    user_email = models.EmailField(max_length=254)
+    text = models.TextField(max_length=400)
+
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
