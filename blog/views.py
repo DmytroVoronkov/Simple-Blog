@@ -1,19 +1,21 @@
 from datetime import date
 
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 
 from .models import Post
 
 
-def get_date(post):
-    return post["date"]
+class StartingPageView(ListView):
+    template_name = "blog/index.html"
+    model = Post
+    ordering = ["-date"]
+    context_object_name = "posts"
 
-
-# Create your views here.
-def starting_page(request):
-    latest_posts = Post.objects.all().order_by("-date")[:3]
-
-    return render(request, "blog/index.html", {"posts": latest_posts})
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        data = queryset[:3]
+        return data
 
 
 def posts(request):
@@ -25,4 +27,6 @@ def post_detail(request, slug):
     # post = next(post for post in all_posts if post["slug"] == slug)
     post = get_object_or_404(Post, slug=slug)
     post_tags = post.tags.all()
-    return render(request, "blog/post-detail.html", {"post": post, "post_tags": post_tags})
+    return render(
+        request, "blog/post-detail.html", {"post": post, "post_tags": post_tags}
+    )
