@@ -1,19 +1,34 @@
-{% extends 'layout.html' %} {% load static %} {% block title %} {{post.title}} {% endblock title %}
+{% extends 'layout.html' %} 
+{% load static %} 
+
+{% block title %} {{post.title}} {% endblock title %}
+
 {% block css_files %}
 <link rel="stylesheet" href="{% static 'blog/styles/post-detail.css' %}" />
-{% endblock css_files %} {% block content %}
-<section id="summary">
-  <h2>{{post.title}}</h2>
+{% endblock css_files %} 
+
+{% block content %}
+  <section id="summary">
+    <h2>{{post.title}}</h2>
+    <div>
+      {% for tag in post_tags %}
+        <span class="tag">{{tag}}</span> 
+      {% endfor %}
+    </div>
+    <article>
+      <img src="{{post.image.url}}" alt="{{post.title}}" />
+      <address>By <a href="mailto:{{post.author.email_address}}">{{post.author}}</a></address>
+      <div>Last Updated on <time>{{post.date}}</time></div>
+    </article>
+  </section>
+  
+  <main>{{post.content|linebreaks}}</main>
+
   <div>
-    {% for tag in post_tags %}
-      <span class="tag">{{tag}}</span> 
-    {% endfor %}
+    <form action="">
+      {{ comment_form }}
+      <button>Save Comment</button>
+    </form>
   </div>
-  <article>
-    <img src="{{post.image.url}}" alt="{{post.title}}" />
-    <address>By <a href="mailto:{{post.author.email_address}}">{{post.author}}</a></address>
-    <div>Last Updated on <time>{{post.date}}</time></div>
-  </article>
-</section>
-<main>{{post.content|linebreaks}}</main>
+
 {% endblock content %}
